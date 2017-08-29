@@ -1,0 +1,6 @@
+{% extends "channels.html" %} {% block servicename %}
+<div class="service-name" style="color:#{{ devices.devices[d].channels[c].css_color }};background:#{{ devices.devices[d].channels[c].css_background }};">
+    {% if (devices.devices[d].channels[c].service_name) and (not devices.devices[d].channels[c].can_call) %} {{ devices.devices[d].channels[c].service_name[0] }} {% else %} » {% end %}
+</div>
+<!-- service name -->
+{% end %}

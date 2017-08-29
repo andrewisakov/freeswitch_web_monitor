@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% block head %}
+    <head>
+        <title>Транки</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/devices.css" rel="stylesheet">
+    </head>
+{% end %}
+    <body>
+
+        <div class="devices-header"></div>
+        <div class="devices-content">
+            <div class="devices-list">
+                {% for dev in devices %}
+                <div class="sip-device">
+                    <div class="sip-device-header">{{ dev.address }}</div>
+                    <div class="sip-device-channels">
+                    {% for channel in dev.channels %}
+                        <div class="sip-device-channel">
+                            {{ channel.port }}
+                        </div>
+                    {% end %}
+                    </div>
+                {% end %}
+                </div>
+            </div>
+            <div class="sip-list">
+                {% for sip in sip_lines %s}
+                <div class="sip-line">
+                    <div class="sip-operator">{{ sip.operator }}</div>
+                    <div class="sip-phone">{{ sip.phone }}</div>
+                    <div class="sip-channel-selected">{{ sip.channel_selected }}</div>
+                </div>
+                {% end %s}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ static_url("css/channels.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/time_line.css") }}" type="text/css"/>
+    <script src="{{ static_url("brython/brython.js") }}"></script>
+    <script type="text/python3" src="{{ static_url("py/operators_time_line.py") }}"></script>
+</head>
+
+<body onload="brython(1)">
+    <header>
+        <div class="dashboard"></div>
+        <div id="score_answered" class="score-answered">0</div>
+        <div id="score_noanswered" class="score-no-answered">0</div>
+    </header>
+    <div class="content-calls">
+        <div class="content" id="content">
+        </div>
+    </div>
+    <div class="content-noanswered">
+        <div class="noanswered-calls" id="noanswered_calls">
+        </div>
+    </div>
+    <footer>
+        <div>
+            <div class="legends">
+                <div class="legend">
+                    <span class="legend" style="background-color: green;width: 22px;position:relative;top:3px"></span>
+                    <div class="legend" style="background-color: white;padding-left:3px;">Входящие</div>
+                </div>
+                <div class="legend">
+                    <span class="legend" style="background-color: darkblue;width: 22px;position:relative;top:3px"></span>
+                    <div class="legend" style="background-color: white;padding-left:3px;">Набор исходящего</div>
+                </div>
+                <div class="legend">
+                    <span class="legend" style="background-color: blue;width: 22px;position:relative;top:3px"></span>
+                    <div class="legend" style="background-color: white;padding-left:3px;">Исходящий отвечен</div>
+                </div>
+                <div class="legend">
+                    <span class="legend" style="background-color: red;width: 22px;position:relative;top:3px"></span>
+                    <div class="legend" style="background-color: white;padding-left:3px;">Неотвеченные</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>

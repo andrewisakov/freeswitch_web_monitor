@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ static_url("css/channels.css") }}" type="text/css">
+    <script src="{{ static_url("brython/brython.js") }}"></script>
+    <script type="text/python3" src="{{ static_url("py/channels.py") }}"></script>
+  </head>
+  <body onload="brython()">
+    <header>Телефония</header>
+    <div class="channels">
+      {% for d in devices.devices %}
+        {% for c in sorted(devices.devices[d].channels) %}
+          {% if devices.devices[d].channels[c].can_call %}
+      <div class="channel {{ devices.devices[d].channels[c].sip_gateway_name }} 0{{ devices.devices[d].channels[c].phone}} {{ devices.devices[d].class_name }}"> 
+          {% else %}
+          {% if devices.devices[d].channels[c].phone[:2] == '23' %}
+      <div class="channel {{ devices.devices[d].channels[c].phone}} {{ devices.devices[d].class_name }}"> 
+          {% else %}
+      <div class="channel 0{{ devices.devices[d].channels[c].phone}} {{ devices.devices[d].class_name }}"> 
+         {% end %}
+        {% end %}
+        <div class="channel-header">
+          <div class="service-name" style="color:#{{ devices.devices[d].channels[c].css_color }};background:#{{ devices.devices[d].channels[c].css_background }};">
+            {% if devices.devices[d].channels[c].service_name %}
+              {{ devices.devices[d].channels[c].service_name[0] }}
+            {% end %}
+          </div> <!-- service name -->
+          <div class="device-header"> 
+            <div class="device-address">{{ devices.devices[d].address }}</div>
+            <div class="device-port">:{{ str(devices.devices[d].channels[c].channel)[-1:] }}</div>
+          </div> <!-- device header -->
+          <div class="channel-phone" style="color:#{{ devices.devices[d].channels[c].css_color }};background:#{{ devices.devices[d].channels[c].css_background }};">
+            {{ devices.devices[d].channels[c].phone}}
+          </div> <!-- channel phone -->
+          <div class="channel-tagged">{{ devices.devices[d].channels[c].tagged if devices.devices[d].channels[c].tagged else '' }}</div>
+        </div> <!-- channel header -->
+        <!-- <div class="channel-state"></div> -->
+      </div> <!-- channel XXX XXX -->
+      {% end %}
+    {% end %}
+    </div> <!-- channels -->
+    <div class="agents">
+    {% for ag in agents %}
+      <div class="agents-group-name">{{ ag }}</div>
+      <div class="agents-group">
+        {% for a in agents[ag] %}
+        <div class="agent {{ a[0] }}">{{ a[0] }}</div>
+        {% end %}
+      </div> <!-- agnts group -->
+    {% end %}
+    </div> <!-- agents -->
+    <footer></footer>
+  </body>
+</html>

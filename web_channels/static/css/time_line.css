@@ -1,0 +1,226 @@
+body {
+    padding: 0;
+    margin: 0;
+    margin-top: 68px;
+}
+.content-calls,
+.content-noanswered,
+.content-outbound {
+    display:block;
+}
+.content-calls {
+    padding-top:4px;
+}
+.content,
+.noanswered-calls,
+.outbound-calls {
+    display: inline-table;
+    /*position: fixed;*/
+    /*border: 1px solid red;*/
+    /*margin-top: 64px;*/
+    /*top:70px;
+    bottom:38px;*/
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: ghostwhite;
+}
+.operator-canvas,
+.noanswered-canvas {
+    display: table-cell;
+    margin:0;
+    border-bottom: 1px solid blue;
+    text-align: right;
+    white-space: nowrap;
+    padding-top: 1px;
+    /*line-height: 14px;*/
+}
+.call-brick,
+.noanswered-brick {
+    /*height: 18px;*/
+    display: inline-block;
+    margin: 0;
+    margin-top: 1px;
+    background: green;
+    height: 14px;
+}
+.call-brick::after{
+    content: "";
+    display: inline-table;
+    clear: both;
+}
+.call-brick:hover {
+    background-color: lightgreen;
+}
+
+.call-brick-outbound {
+    /*height: 18px;*/
+    display: inline-block;
+    margin: 0;
+    margin-top: 1px;
+    background: lightblue;
+    height: 14px;
+}
+.call-brick-outbound::after{
+    content: "";
+    display: inline-table;
+    clear: both;
+}
+.call-brick-outbound:hover {
+    background-color: lightskyblue
+}
+
+.noanswered-brick {
+    background-color: red;
+    color: ghostwhite;
+}
+.noanswered-brick::after {
+    content: "";
+    display: inline-table;
+    clear: both;
+}
+.noanswered-brick:hover {
+    background-color: lightcoral;
+}
+
+.operator-info,
+.noanswered-info {
+    display: table-cell;
+    width:232px;
+    border-bottom: 1px solid red;
+    border-left: 1px solid red;
+    margin: 0;
+    /*line-height: 14px;*/
+}
+.operator-name {
+    display: inline-block;
+    width:32px;
+    /*border-bottom: 1px solid red;*/
+    border-right: 1px solid red;
+    margin: 0;
+    /*line-height: 14px;*/
+}
+.operator-width {
+    display: inline-block;
+
+}
+.operator-row,
+.noanswered-row {
+    display: table-row;
+    border: 1px solid gray;
+    height:18px;
+    /*line-height: 22px;*/
+}
+/*.operator-row::after {
+    content: "";
+    display: inline-table;
+    clear: both;
+}*/
+header, footer {
+    display: block;
+    position: fixed;
+    margin: 0;
+    width: 100%;
+    padding: 3px;
+
+}
+header {
+    height: 64px;
+    top: 0;
+    border-bottom: 2px solid dodgerblue;
+}
+footer {
+    height: 32px;
+    bottom: 0;
+    border-top: 2px solid dodgerblue;
+}
+.legend {
+    font-size: 14px;
+    height: 14px;
+    display: inline-block;
+    color: darkolivegreen;
+    padding-right: 3px;
+}
+.legends {
+    display: block;
+    margin-right: 3px;
+}
+.dashboard {
+    display: inline-block;
+    height: 64px;
+    /*border: 1px solid lightsteelblue;*/
+    border-radius: 5px;
+    background-color: lightsteelblue;
+}
+.score-answered,
+.score-no-answered,
+.operator-score-answered,
+.operator-score-noanswered {
+    display: inline-block;
+    width: 88px;
+    height: 64px;
+    color: white;
+    /*padding-top:16px;*/
+    font-size: 32px;
+    float: right;
+    margin-right: 1px;
+    text-align: right;
+    /*vertical-align: middle;*/
+    padding-right: 5px;
+}
+.operator-score-answered,
+.score-answered {
+    background: green;
+}
+.operator-score-noanswered,
+.score-no-answered {
+    background: red;
+}
+.operator-score-answered,
+.operator-score-noanswered {
+    height: 16px;
+    width: 28px;
+    font-size: 14px;
+    padding-right: 2px;
+    padding-top: 1px;
+}
+.score-answered,
+.score-no-answered {
+    line-height:66px;
+}
+.noanswered-wait,
+.noanswered-phone,
+.noanswered-operator {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    border-right: 1px solid white;
+}
+.noanswered-wait,
+.answered-wait {
+    width: 16px;
+}
+.answered-duration {
+    width: 24px;
+}
+.noanswered-phone,
+.answered-phone {
+    width: 84px;
+    font-weight: bold;
+}
+.noanswered-operator {
+    width:32px;
+}
+.answered-wait,
+.answered-duration,
+.answered-phone {
+    display: inline-block;
+    background-color: green;
+    color: ghostwhite;
+    border-right: 1px solid white;
+    text-align: right;
+    padding-right: 2px;
+}
+.answered-phone {
+    font-weight: bold;
+}

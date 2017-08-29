@@ -1,0 +1,10 @@
+{% extends "channels.html" %} {% block channelphone %}
+<div class="service-name channel-phone" style="color:#{{ devices.devices[d].channels[c].css_color }};background:#{{ devices.devices[d].channels[c].css_background }};">
+    {% if devices.devices[d].class_name == 'sip_trank' %}
+    <!-- Транк -->
+    {{ devices.devices[d].channels[c].channel}} {% else %}
+    <!-- sip/gsm -->
+    {{ devices.devices[d].channels[c].phone}} {% end %}
+</div>
+<!-- channel phone -->
+{% endblock %}

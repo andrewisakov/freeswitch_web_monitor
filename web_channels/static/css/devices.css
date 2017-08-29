@@ -1,0 +1,66 @@
+.devices-header {
+    display: block;
+}
+
+.devices-content {
+    display: inline-block;
+    float: left;
+}
+
+.devices-list {
+    display: block;
+}
+
+.sip-device {
+    display: inline-block;
+    width: 200px;
+    border:1px solid lightblue;
+    border-radius: 5px 0 0 0;
+    margin:3px;
+}
+
+.sip-device-header {
+    display: block;
+    padding-left: 3px;
+    background: lightgoldenrodyellow;
+}
+
+.sip-device-channels {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+.sip-device-channel {
+    display: block;
+    padding: 0;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.sip-list {
+    /*Список sip-транков */
+    clear:left;
+    /*display: inline-block;*/
+    width: 200px;
+    float: right;
+    padding: 0;
+}
+.sip-line {
+    display: block;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top:0;
+    margin-bottom: 1px;
+    border: 1px solid lightgray;
+}
+.sip-operator {
+    display: inline-block;
+
+}
+.sip-phone {
+
+}
+.sip-channel-selected {
+
+}

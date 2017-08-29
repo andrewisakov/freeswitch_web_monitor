@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ static_url("css/devices.css") }}" type="text/css"/>
+  </head>
+  <body>
+    <div class='devices'>
+    {% for d in devices.devices %}
+      <div class="device {{ d }}"> {{ devices.devices[d].data['address'] }} / {{ devices.devices[d].data['class_name'] }}
+      {% for c in sorted(devices.devices[d].channels) %}
+        <div class="channel {{ d }} {{ c }}"> 
+        {{ devices.devices[d].channels[c].channel }} : {{ devices.devices[d].channels[c].phone}}
+        «{{ devices.devices[d].channels[c].service_name }}»
+        </div>
+      {% end %}
+      </div>
+    {% end %}
+    </div>
+  </body>
+</html>

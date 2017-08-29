@@ -1,0 +1,96 @@
+#!/usr/bin/python3
+import datetime, time, socket, queue, pickle, threading, plugins, channels
+
+LOCAL_SERVER = ('0.0.0.0', 7755)
+SO_SOCKETS = 128
+SO_BUFFER = 1024
+caller_queue = {}
+events = plugins.routes
+
+def so_reciever(so, queue_in):
+  #raddr = so.getpeername()[0]
+  recved = b''
+  while 1:
+    try:
+      recved += so.recv(SO_BUFFER)
+      event = pickle.loads(recved)
+      #print ('Принято: %s' % recved)
+      if event['Event-Name'] in events:
+        #event[u'Event-Date-Timestamp'] = datetime.datetime.fromtimestamp(int(event[u'Event-Date-Timestamp'][:-6])).strftime('%Y-%m-%d %H:%M:%S') + '.' + event[u'Event-Date-Timestamp'][-6:]
+        
+        queue_in.put(event)
+      break
+    except Exception as e:
+      pass
+      #print ('so_receiver exception: %s' % e)
+
+def so_server(quieue_in):
+  is_active = True
+  with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as so:
+    so.bind(LOCAL_SERVER)
+    so.listen(SO_SOCKETS)
+    print (so)
+    while 1:
+      con, addr = so.accept()
+      #print ('so_server accept: %s from %s' % (con, addr))
+      with con:
+        try:
+          threading.Thread(target=so_reciever, args=(con, quieue_in, )).start()
+        except Exception as e:
+          print ('so_server exception 2: %s' % e)
+
+class caller_queue_(threading.Thread):
+  def __init__(self):
+    threading.Thread.__init__(self)
+    self.que = queue.Queue()
+  
+  def send(self, data):
+    self.que.put(data)
+
+  def run(self):
+    while 1:
+      ev = self.que.get()
+      with open(ev['Caller-Unique-ID'], 'a') as evf:
+        evf.write('%s:\n' % ev['Event-Name'])
+        for k in sorted(ev):
+          evf.write('%s:%s\n' % (k, ev[k]))
+        evf.write('\n')
+      #print ('caller_queue_: %s' % ev)
+
+def queue_work(queue_in):
+  print ('queue_work запущен...')
+  while 1:
+    try:
+      data  = queue_in.get()
+      event = data['Event-Name']
+      try:
+        if caller_queue[data['Caller-Unique-ID']].isAlive: pass
+        else:
+          #del caller_queue[data['Caller-Unique-ID']]
+          raise
+      except:
+        caller_queue[data['Caller-Unique-ID']] = caller_queue_()
+        caller_queue[data['Caller-Unique-ID']].start()
+      caller_queue[data['Caller-Unique-ID']].send(data)
+      """
+      #del data['Event-Name']
+      print ('%s: %s' % (event, data))
+      with open(data['Caller-Unique-ID'], 'a') as evf:
+        evf.write('%s:\n' % event)
+        for k in sorted(data):
+          evf.write('%s:%s\n' % (k, data[k]))
+        evf.write('\n')
+      """
+      #threading.Thread(target=plugins.routes[event], args=(event, data,)).start()
+    except Exception as e:
+      print ('queue_work exception %s: %s' % (e, data))
+  print ('queue_work завершён...')
+
+def main():
+  queue_recv = queue.Queue()
+  events_queue = queue.Queue()
+  threading.Thread(target=channels.events_queue, args=(queue_recv, )).start()
+  threading.Thread(target=so_server, args=(queue_recv, )).start()
+
+if __name__ == '__main__':
+  main()

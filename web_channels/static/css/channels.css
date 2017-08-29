@@ -1,0 +1,387 @@
+body {
+    font-size: 12px;
+    font-family: "Lucida Console";
+}
+
+header,
+footer {
+    background: #555555;
+    color: #ffffff;
+    margin-bottom: 1px;
+    padding-left: 5px;
+    width: 614px;
+    text-align: center;
+}
+
+main {
+    width: 1024px;
+    border: 1px solid blue;
+    display: block;
+}
+
+.agents {
+    float: left;
+    width: 160px;
+    /*border:1px solid black;*/
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.agents-group-name {
+    font-size: 9px;
+    background: #555555;
+    color: #ffffff;
+    padding: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-weight: bold;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.agent {
+    display: block;
+    border: 1px solid gray;
+    margin: 1px;
+    font-size: 10px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 1px;
+    /*padding-left:3px;*/
+}
+
+.agent::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.agent-header {
+    float: left;
+    /*display:inline-block;*/
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 1px;
+    text-align: right;
+    width: 25px;
+    font-size: 10px;
+}
+
+.agent-direction {
+    float: left;
+    /*display:inline-block;*/
+    width: 10px;
+    border: 1px solid green;
+}
+
+.agent-state {
+    /*float: right;*/
+    display:inline-block;
+    border: 1px solid red;
+    left: 3px;
+    width: 107px;
+    white-space: nowrap;
+}
+
+.channels {
+    float: left;
+    /*display:inline-block;*/
+    /*border:1px solid #afafaf;*/
+    margin-bottom: 1px;
+    width: 800px;
+    padding: 0;
+}
+
+.channel {
+    display: block;
+    /*border: 1px solid lightgray;*/
+    /*vertical-align:center;*/
+    padding: 1px;
+    padding-left: 3px;
+    margin-bottom: 1px;
+    background: white;
+    border-radius: 3px 0 0 0;
+}
+
+.channel::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.channel-header {
+    float: left;
+    /*display:inline-block;*/
+    font-size: 10px;
+}
+
+.service-name {
+    float: left;
+    /*display:inline-block;*/
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+    width: 16px;
+    padding-top: 2px;
+    margin-bottom: 1px;
+}
+
+.channel-phone {
+    float: left;
+    /*display:inline-block;*/
+    width: 80px;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    /*margin-top:2px;*/
+    color: darkslategrey;
+    /*color:white;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;*/
+}
+
+.channel-tagged {
+    float: left;
+    /*display:inline-block;*/
+    font-size: 1px;
+}
+
+.call-trace {
+    float: left;
+    /*display:inline-block;*/
+    padding: 1px;
+    /*font-size:8px;*/
+    white-space: nowrap;
+    /*border:1px solid red;*/
+    width: 500px;
+    /*height:11px;*/
+    /*margin-top: 2px;*/
+}
+
+.device {
+    float: left;
+    /*display:inline-block;*/
+    /*width:102px;*/
+    padding-left: 3px;
+}
+
+.device-header {
+    float: left;
+    /*display:inline-block;*/
+    width: 92px;
+    padding-top: 1px;
+}
+
+.device-address {
+    float: left;
+    /*display:inline-block;*/
+    width: 80px;
+    font-size: 10px;
+    padding-left: 3px;
+}
+
+.device-port {
+    float: left;
+    /*display:inline-block;*/
+    width: 8px;
+    font-size: 8px;
+}
+
+.callee-timer {
+    float: left;
+}
+.caller-id-number {
+    float: left;
+    /*display:inline-block;*/
+    width: 58px;
+    text-align: right;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-top:2px;
+    padding-bottom: 0;
+    font-size: 9px;
+}
+
+.callee-id-number {
+    float: left;
+    /*display:inline-block;*/
+    width: 32px;
+    text-align: right;
+    padding-top: 2px;
+    padding-right: 2px;
+    font-size: 9px;
+    height: 12px;
+}
+
+.operator-id-number {
+    float: left;
+    /*display:inline-block;*/
+    width: 24px;
+    text-align: right;
+    padding-top: 2px;
+    padding-right: 2px;
+    font-size: 9px;
+    height: 10px;
+}
+
+.callee_timer {
+    float: left;
+    /*display:inline-block;*/
+    width: 30px;
+    font-size: 9px;
+    padding: 1px;
+    padding-top: 2px;
+    /*border: 1px solid green;*/
+    text-align: right;
+    font-weight: bold;
+}
+
+.counters {
+    float: left;
+    /*display: inline-block;*/
+    width: 81px;
+    font-size: 9px;
+    padding-top: 1px;
+    margin:0;
+}
+
+.counters::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.total {
+    float: left;
+    /*display:inline-block;*/
+    width: 24px;
+    font-size: 9px;
+    background: lightgray;
+    text-align: right;
+    padding: 1px;
+    padding-right: 2px;
+    /*margin-top:1px;*/
+    height: 11px;
+    margin:0;
+}
+
+.total::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.answered {
+    float: left;
+    /*display:inline-block;*/
+    width: 24px;
+    background: lightgreen;
+    text-align: right;
+    padding: 1px;
+    padding-right: 2px;
+    font-size: 9px;
+    /*margin-top:1px;*/
+    height: 11px;
+}
+
+.answered::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.rejected {
+    float: left;
+    /*display:inline-block;*/
+    width: 24px;
+    background: red;
+    text-align: right;
+    padding: 1px;
+    padding-right: 2px;
+    font-size: 9px;
+    /*margin-top:1px;*/
+    height: 11px;
+}
+
+.rejected::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.channel-splitter {
+    float: left;
+    /*display:inline-block;*/
+    width: 180px;
+    /*border:1px solid red;*/
+    /*background: lightgrey;*/
+    text-align: right;
+    padding: 2px;
+    font-size: 9px;
+    color: gray;
+}
+.channel-splitter::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.event-datetime {
+    display:inline;
+    float: right;
+    padding-right: 3px;
+    padding-top: 2px;
+    font-size: 8px;
+    /*vertical-align:center;*/
+}
+
+.hangup_cause {
+    display:inline-block;
+    /*float: left;*/
+    padding-left: 2px;
+    font-size:9px;
+}
+
+.application-data {
+    /*display:inline-block;*/
+    float: left;
+    padding-left: 2px;
+    text-align: left;
+}
+
+.operator-logo {
+    float: left;
+    /*display: inline-block;*/
+    height: 16px;
+    width: 16px;
+}
+.operator-logo:hover {
+
+}
+.trunk-parameters-tooltip {
+
+}
+.trunk-channels {
+    border: 1px solid lightblue;
+    border-radius: 5px 0 0 0;
+    margin-bottom: 3px;
+    padding-left: 3px;
+    padding-top: 3px;
+    background: lightblue;
+}
+
+.trunk-name {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 12px;
+    color:white;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}

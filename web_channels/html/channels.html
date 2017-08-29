@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ static_url("css/channels.css") }}" type="text/css"/>
+    <script src="{{ static_url("brython/brython.js") }}"></script>
+    <script type="text/python3" src="{{ static_url("py/channels.py") }}"></script>
+</head>
+
+<body onload="brython(1)">
+    <header>Телефония</header>
+    <div class="channels">
+        {% for trg in trunks_groups %}
+            <div class="trunk-channels">
+                <div class="channel-row">
+                    <div class="trunk-name">{{ trg }}</div>
+                    {% for line in trunks_groups[trg] %}
+                        {% for tl in range(0, trunks[line]['max_lines']) %}
+                            <div class="channel {{ line }} {{ tl }}" id="{{ line }}.{{ tl }}">
+                            {% if tl == 0 %}
+                                <img class="operator-logo" src="{{ trunks[line]['operator_logo'] }}"/>
+                                <div class="channel-phone ">{{ trunks[line]['phone'] }}</div>
+                                <div class="counters">
+                                    <div class="total">.</div>
+                                    <div class="answered">.</div>
+                                    <div class="rejected">.</div>
+                                </div>
+                            {% else %}
+                                <div class="channel-splitter {{ line }} {{ tl }}">{{ tl+1 }}</div>
+                            {% end %}
+                                <div class="call-trace {{ line }} {{ tl }}">
+                                    <div class="caller-id-number"></div>
+                                    <div class="callee-id-number"></div>
+                                    <div class="callee-timer"></div>
+                                    <div class="event-datetime"></div>
+                                </div>
+                            </div>
+                        {% end %}
+                    {% end %}
+                </div>
+            </div>
+        {% end %}
+    </div>
+</body>
+
+</html>

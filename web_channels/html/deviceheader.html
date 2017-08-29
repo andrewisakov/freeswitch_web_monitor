@@ -1,0 +1,7 @@
+{% extends "channels.html" %} {% block deviceheader %}
+<div class="device-header">
+    <div class="device-address">{{ devices.devices[d].address }}</div>
+    <div class="device-port">{{ str(devices.devices[d].channels[c].channel)[-1:] }}</div>
+</div>
+<!-- device header -->
+{% endblock %}
